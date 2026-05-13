@@ -77,8 +77,30 @@
             style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
 
-              <tr>
-                <td style="padding:8px;width:100%;vertical-align:middle">
+              <tr onmouseout="gsp_stop()" onmouseover="gsp_start()">
+                <td style="padding:16px;width:20%;vertical-align:middle">
+                  <div class="one">
+                    <div class="two" id="gsp_image">
+                      <img src="images/gsp2.png" width=100%>
+                    </div>
+                    <img src="images/gsp1.png" width=100%>
+                  </div>
+                  <script type="text/javascript">
+                    var gsp_timer = null;
+                    function gsp_start() {
+                      var el = document.getElementById('gsp_image');
+                      gsp_timer = setInterval(function() {
+                        el.style.opacity = el.style.opacity === "1" ? "0" : "1";
+                      }, 600);
+                    }
+                    function gsp_stop() {
+                      clearInterval(gsp_timer);
+                      document.getElementById('gsp_image').style.opacity = "0";
+                    }
+                    gsp_stop()
+                  </script>
+                </td>
+                <td style="padding:8px;width:80%;vertical-align:middle">
                   <span class="papertitle">Mixed Graph Signal Analysis of Joint Image Denoising / Interpolation</span>
                   <br>
                   <strong>Niruhan Viswarupan</strong>,
