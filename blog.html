@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog &mdash; Niruhan Viswarupan</title>
+  <meta name="author" content="Niruhan Viswarupan">
+  <meta name="description" content="Technical blog and notes on Machine Learning, Computer Vision, Deep Learning, and Mathematics.">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  
+  <!-- KaTeX CSS for LaTeX Math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  
+  <!-- Blog Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="blog.css">
+
+  <!-- Marked.js Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- KaTeX Javascript -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+
+  <!-- Mermaid.js for Text-to-Diagram rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.4/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="blog-header">
+      <a href="index.html" class="logo">Niruhan Viswarupan</a>
+      <nav>
+        <a href="index.html">&larr; Back to Portfolio</a>
+      </nav>
+    </header>
+
+    <!-- Index List View (Shows list of posts) -->
+    <section id="list-view" class="list-view">
+      <div class="list-view-header">
+        <h1>Notes &amp; Write-ups</h1>
+        <p>A space where I write about ideas, mathematical derivations, and notes in Computer Vision and Machine Learning.</p>
+      </div>
+      <main id="posts-container" class="posts-container">
+        <!-- Post summaries will be injected here dynamically -->
+      </main>
+    </section>
+
+    <!-- Single Post View (Shows a loaded markdown post) -->
+    <section id="post-view" class="post-view">
+      <a href="blog.html" onclick="event.preventDefault(); navigateTo(null)" class="back-link">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width: 14px; height: 14px; display: inline; vertical-align: middle;">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Back to all notes
+      </a>
+      
+      <article>
+        <header class="post-header">
+          <div class="post-meta">
+            <span id="post-date">Date</span>
+            <span id="post-category" class="post-category">Category</span>
+          </div>
+          <h1 id="post-title">Post Title</h1>
+        </header>
+        
+        <!-- Post content will be injected here dynamically -->
+        <main id="post-body" class="post-body">
+          Loading notes...
+        </main>
+      </article>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span>&copy; 2026 Niruhan Viswarupan</span>
+      <a href="index.html">Portfolio</a>
+    </footer>
+  </div>
+
+  <!-- Blog Javascript Logic -->
+  <script src="blog.js"></script>
+</body>
+</html>
