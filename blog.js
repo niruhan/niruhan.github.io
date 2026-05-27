@@ -1,5 +1,13 @@
 // Blog database - edit this array to manage posts
 const posts = [
+    {
+    id: "diffusion",
+    title: "My Notes from Principles of Diffusion Models Chieh-Hsin Lai et. al.",
+    date: "May 27, 2026",
+    category: "Machine Learning",
+    summary: "",
+    file: "posts/diffusion.md"
+  },
   {
     id: "dream-gaussian",
     title: "DreamGaussian: Generative Gaussian Splatting for Efficient 3D Content Creation",
