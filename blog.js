@@ -1,6 +1,14 @@
 // Blog database - edit this array to manage posts
 const posts = [
     {
+      id: "claude",
+      title: "My CLAUDE.md file optimized to learn as a PhD student",
+      date: "Jun 2, 2026",
+      category: "AI Tools",
+      summary: "",
+      file: "posts/CLAUDE.md"
+    },
+    {
     id: "diffusion",
     title: "My Notes from Principles of Diffusion Models Chieh-Hsin Lai et. al.",
     date: "May 27, 2026",
