@@ -22,8 +22,7 @@ const posts = [
     date: "May 23, 2026",
     category: "Computer Vision",
     summary: "3D Gaussian Diffusion using SDS",
-    type: "pdf",
-    file: "posts/dream_gaussian.pdf"
+    pdfFile: "posts/dream_gaussian.pdf"
   },
   {
     id: "vit",
@@ -31,8 +30,7 @@ const posts = [
     date: "May 23, 2026",
     category: "Computer Vision",
     summary: "",
-    type: "pdf",
-    file: "posts/vit.pdf"
+    pdfFile: "posts/vit.pdf"
   },
   {
     id: "dit",
@@ -40,8 +38,7 @@ const posts = [
     date: "March 26, 2026",
     category: "Computer Vision",
     summary: "",
-    type: "pdf",
-    file: "posts/dit.pdf"
+    pdfFile: "posts/dit.pdf"
   },
   {
     id: "3d-2d",
@@ -49,8 +46,7 @@ const posts = [
     date: "May 23, 2026",
     category: "Computer Vision",
     summary: "",
-    type: "pdf",
-    file: "posts/3D_2D.pdf"
+    pdfFile: "posts/3D_2D.pdf"
   },
   {
     id: "simclr-moco",
@@ -58,8 +54,7 @@ const posts = [
     date: "April 5, 2026",
     category: "Computer Vision",
     summary: "",
-    type: "pdf",
-    file: "posts/simclr_moco.pdf"
+    pdfFile: "posts/simclr_moco.pdf"
   },
   {
     id: "dinov3-losses",
@@ -67,8 +62,7 @@ const posts = [
     date: "April 12, 2026",
     category: "Computer Vision",
     summary: "",
-    type: "pdf",
-    file: "posts/dinov3_losses.pdf"
+    pdfFile: "posts/dinov3_losses.pdf"
   },
   {
     id: "cir",
@@ -76,8 +70,16 @@ const posts = [
     date: "April 9, 2026",
     category: "Computer Vision",
     summary: "Mathematical introduction to the CIR problem",
-    type: "pdf",
-    file: "posts/cir.pdf"
+    pdfFile: "posts/cir.pdf"
+  },
+  {
+    id: "non-normal-matrices",
+    title: "Non-Normal Matrices",
+    date: "Jun 2, 2026",
+    category: "Mathematics",
+    summary: "",
+    file: "posts/non_normal_matrices.md",
+    pdfFile: "posts/non_normal_matrices.pdf"
   },
   {
     id: "policy-grad",
@@ -85,8 +87,8 @@ const posts = [
     date: "May 23, 2026",
     category: "Reinforcement Learning",
     summary: "",
-    type: "pdf",
-    file: "posts/policy_grad.pdf"
+    file: "posts/policy_grad.md",
+    pdfFile: "posts/policy_grad.pdf"
   },
   {
     id: "vggt",
@@ -169,12 +171,20 @@ function showIndex() {
   posts.forEach(post => {
     const postElement = document.createElement("article");
     postElement.className = "post-summary-card";
-    const isPdf = post.type === "pdf";
-    const postHref = isPdf ? post.file : `blog.html?post=${post.id}`;
-    const linkAttrs = isPdf
+    const isPdfOnly = !!post.pdfFile && !post.file;
+    const postHref = isPdfOnly ? post.pdfFile : `blog.html?post=${post.id}`;
+    const linkAttrs = isPdfOnly
       ? `href="${postHref}" target="_blank" rel="noopener"`
       : `href="${postHref}" onclick="event.preventDefault(); navigateTo('${post.id}')"`;
-    const actionText = isPdf ? "Open PDF &rarr;" : "Read notes &rarr;";
+
+    let actionLinks;
+    if (post.pdfFile && post.file) {
+      actionLinks = `<a href="blog.html?post=${post.id}" onclick="event.preventDefault(); navigateTo('${post.id}')" class="read-more-link">Read notes &rarr;</a>
+        <a href="${post.pdfFile}" target="_blank" rel="noopener" class="read-more-link">View PDF &rarr;</a>`;
+    } else {
+      const actionText = isPdfOnly ? "Open PDF &rarr;" : "Read notes &rarr;";
+      actionLinks = `<a ${linkAttrs} class="read-more-link">${actionText}</a>`;
+    }
 
     postElement.innerHTML = `
       <div class="post-meta">
@@ -185,7 +195,7 @@ function showIndex() {
         <a ${linkAttrs}>${post.title}</a>
       </h2>
       <p class="post-summary">${post.summary}</p>
-      <a ${linkAttrs} class="read-more-link">${actionText}</a>
+      ${actionLinks}
     `;
 
     postsContainer.appendChild(postElement);
@@ -214,9 +224,9 @@ function loadPost(post) {
   postDate.textContent = post.date;
   postCategory.textContent = post.category;
 
-  // PDF post: open the file directly so the browser uses its native PDF viewer.
-  if (post.type === "pdf") {
-    window.open(post.file, "_blank", "noopener");
+  // PDF-only post: open directly in the browser's native PDF viewer.
+  if (post.pdfFile && !post.file) {
+    window.open(post.pdfFile, "_blank", "noopener");
     navigateTo(null);
     return;
   }
