@@ -140,3 +140,47 @@ span.highlight {
     display: inline-block;
     border-radius: 10px;
 }
+
+/* Presentations use the same thumbnail and text alignment as publications. */
+#presentations {
+  margin-top: 16px;
+  scroll-margin-top: 20px;
+}
+
+.presentations-intro {
+  padding: 16px 16px 0;
+}
+
+.presentation {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  padding: 16px;
+}
+
+.presentation-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.presentation-details {
+  min-width: 0;
+}
+
+.presentation-details h3 {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.presentation-details p {
+  margin: 6px 0 0;
+}
+
+@media (max-width: 640px) {
+  .presentation {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 16px;
+  }
+}
