@@ -170,7 +170,7 @@ function showIndex() {
 
   posts.forEach(post => {
     const postElement = document.createElement("article");
-    postElement.className = "post-summary-card";
+    postElement.className = "post-entry";
     const isPdfOnly = !!post.pdfFile && !post.file;
     const postHref = isPdfOnly ? post.pdfFile : `blog.html?post=${post.id}`;
     const linkAttrs = isPdfOnly
@@ -179,23 +179,24 @@ function showIndex() {
 
     let actionLinks;
     if (post.pdfFile && post.file) {
-      actionLinks = `<a href="blog.html?post=${post.id}" onclick="event.preventDefault(); navigateTo('${post.id}')" class="read-more-link">Read notes &rarr;</a>
-        <a href="${post.pdfFile}" target="_blank" rel="noopener" class="read-more-link">View PDF &rarr;</a>`;
+      actionLinks = `<a href="blog.html?post=${post.id}" onclick="event.preventDefault(); navigateTo('${post.id}')">Read notes</a>
+        &nbsp;/&nbsp; <a href="${post.pdfFile}" target="_blank" rel="noopener">PDF</a>`;
     } else {
-      const actionText = isPdfOnly ? "Open PDF &rarr;" : "Read notes &rarr;";
-      actionLinks = `<a ${linkAttrs} class="read-more-link">${actionText}</a>`;
+      const actionText = isPdfOnly ? "PDF" : "Read notes";
+      actionLinks = `<a ${linkAttrs}>${actionText}</a>`;
     }
 
     postElement.innerHTML = `
+      <h2 class="post-title">
+        <a ${linkAttrs} class="papertitle">${post.title}</a>
+      </h2>
       <div class="post-meta">
         <span class="post-date">${post.date}</span>
+        <span aria-hidden="true">/</span>
         <span class="post-category">${post.category}</span>
       </div>
-      <h2 class="post-title">
-        <a ${linkAttrs}>${post.title}</a>
-      </h2>
-      <p class="post-summary">${post.summary}</p>
-      ${actionLinks}
+      ${post.summary ? `<p class="post-summary">${post.summary}</p>` : ""}
+      <p class="post-links">${actionLinks}</p>
     `;
 
     postsContainer.appendChild(postElement);
@@ -298,6 +299,15 @@ function renderMarkdownContent(markdownText, containerEl) {
 
   // Set the HTML content
   containerEl.innerHTML = html;
+
+  // The article header already displays the title; keep distinct Markdown headings.
+  const firstHeading = containerEl.firstElementChild;
+  const articleTitle = document.getElementById('post-title');
+  const normalizeTitle = text => text.trim().replace(/\s+/g, ' ').toLowerCase();
+  if (firstHeading && firstHeading.tagName === 'H1' && articleTitle &&
+      normalizeTitle(firstHeading.textContent) === normalizeTitle(articleTitle.textContent)) {
+    firstHeading.remove();
+  }
 
   // 5. Render LaTeX Equations using KaTeX
   if (window.katex) {

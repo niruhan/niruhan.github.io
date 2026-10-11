@@ -10,6 +10,9 @@
   
   <!-- Favicon -->
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+
+  <!-- Shared typography and link styles from the portfolio -->
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
   
   <!-- KaTeX CSS for LaTeX Math rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -26,14 +29,15 @@
   <!-- Mermaid.js for Text-to-Diagram rendering -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.4/dist/mermaid.min.js"></script>
 </head>
-<body>
+<body class="blog-page">
 
-  <div class="container">
+  <div class="blog-container">
     <!-- Header -->
     <header class="blog-header">
-      <a href="index.html" class="logo">Niruhan Viswarupan</a>
-      <nav>
-        <a href="index.html">&larr; Back to Portfolio</a>
+      <p class="name"><a href="index.html">Niruhan Viswarupan</a></p>
+      <nav aria-label="Site navigation">
+        <a href="index.html">Home</a> &nbsp;/&nbsp;
+        <a href="blog.html" aria-current="page">Blog</a>
       </nav>
     </header>
 
@@ -51,19 +55,17 @@
     <!-- Single Post View (Shows a loaded markdown post) -->
     <section id="post-view" class="post-view">
       <a href="blog.html" onclick="event.preventDefault(); navigateTo(null)" class="back-link">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width: 14px; height: 14px; display: inline; vertical-align: middle;">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-        Back to all notes
+        &larr; All notes
       </a>
       
       <article>
         <header class="post-header">
+          <h1 id="post-title">Post Title</h1>
           <div class="post-meta">
             <span id="post-date">Date</span>
+            <span aria-hidden="true">/</span>
             <span id="post-category" class="post-category">Category</span>
           </div>
-          <h1 id="post-title">Post Title</h1>
         </header>
         
         <!-- Post content will be injected here dynamically -->
@@ -74,9 +76,8 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-      <span>&copy; 2026 Niruhan Viswarupan</span>
-      <a href="index.html">Portfolio</a>
+    <footer class="blog-footer">
+      <p>Template based on <a href="https://jonbarron.info/">Jon Barron's website</a>.</p>
     </footer>
   </div>
 

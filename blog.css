@@ -1,363 +1,277 @@
-/* Minimal Blog CSS - Clean Academic Aesthetic */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
-
-:root {
-  --font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --text-muted: #666666;
-  --accent-color: #1772d0;
-  --accent-hover: #f09228;
-  --border-color: #dddddd;
-  --bg-code: #f4f4f5;
-  --max-width: 800px;
+/* Blog layout; typography, fonts, and link colors come from stylesheet.css. */
+.blog-page {
+  color: #000;
+  background: #fff;
+  line-height: 1.5;
 }
 
-* {
+.blog-container {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: var(--font-family);
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.7;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Page Container */
-.container {
-  max-width: var(--max-width);
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 20px;
 }
 
-/* Navigation Header */
-header.blog-header {
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 20px;
-  margin-bottom: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.blog-header {
+  text-align: center;
+  margin-bottom: 32px;
 }
 
-header.blog-header .logo {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-color);
-  text-decoration: none;
-}
-
-header.blog-header .logo:hover {
-  color: var(--accent-hover);
-}
-
-header.blog-header nav a {
-  color: var(--accent-color);
-  text-decoration: none;
-  font-size: 14px;
-}
-
-header.blog-header nav a:hover {
-  color: var(--accent-hover);
-}
-
-/* Blog Index / List View */
-.list-view-header {
-  margin-bottom: 30px;
-}
-
-.list-view-header h1 {
-  font-size: 28px;
-  font-weight: normal;
-  margin-bottom: 8px;
-}
-
-.list-view-header p {
-  color: var(--text-muted);
-  font-size: 15px;
-}
-
-.posts-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.post-summary-card {
-  padding: 24px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.post-summary-card:last-child {
-  border-bottom: none;
-}
-
-.post-meta {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-  display: flex;
-  gap: 12px;
-}
-
-.post-category {
-  color: var(--accent-color);
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 0.05em;
-}
-
-.post-title {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  line-height: 1.3;
-}
-
-.post-title a {
-  color: var(--text-color);
-  text-decoration: none;
-}
-
-.post-title a:hover {
-  color: var(--accent-color);
-}
-
-.post-summary {
-  color: #555555;
+.blog-header .name {
+  padding-top: 16px;
   margin-bottom: 12px;
 }
 
-.read-more-link {
-  color: var(--accent-color);
-  text-decoration: none;
+.blog-header .name a {
+  font-size: inherit;
+  color: inherit;
+}
+
+.blog-header .name a:hover,
+.blog-header .name a:focus {
+  color: #f09228;
+}
+
+.blog-header nav a[aria-current="page"] {
+  color: inherit;
+}
+
+.blog-header nav a[aria-current="page"]:hover,
+.blog-header nav a[aria-current="page"]:focus {
+  color: #f09228;
+}
+
+.list-view-header h1,
+.post-header h1 {
+  font-size: 22px;
+  font-weight: normal;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.list-view-header {
+  margin-bottom: 16px;
+}
+
+.list-view-header p {
+  margin: 14px 0;
+}
+
+/* Compact entries follow the portfolio's publication list. */
+.post-entry {
+  padding: 12px 0;
+}
+
+.post-title {
+  margin: 0 0 4px;
   font-size: 14px;
-  font-weight: bold;
+  line-height: 1.5;
 }
 
-.read-more-link:hover {
-  color: var(--accent-hover);
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 6px;
 }
 
-/* Single Post View */
+.post-category {
+  font-style: italic;
+}
+
+.post-summary {
+  margin: 6px 0 0;
+}
+
+.post-links {
+  margin: 4px 0 0;
+}
+
 .post-view {
   display: none;
 }
 
 .back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--accent-color);
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 24px;
-}
-
-.back-link:hover {
-  color: var(--accent-hover);
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
 .post-header {
-  margin-bottom: 30px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .post-header h1 {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
-/* Rendered Markdown Body Styling */
+/* Keep notes readable without introducing a separate visual theme. */
 .post-body {
-  font-size: 16px;
-  color: #222222;
+  line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
-.post-body p {
-  margin-bottom: 1.5em;
+.post-body p,
+.post-body a,
+.post-body strong,
+.post-body td,
+.post-body th {
+  font-size: inherit;
 }
 
+.post-body p,
+.post-body ul,
+.post-body ol {
+  margin: 0 0 16px;
+}
+
+.post-body h1,
 .post-body h2 {
   font-size: 22px;
   font-weight: normal;
-  margin-top: 1.8em;
-  margin-bottom: 0.8em;
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 6px;
+  line-height: 1.35;
+  margin: 28px 0 14px;
 }
 
-.post-body h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 1.5em;
-  margin-bottom: 0.6em;
+.post-body h3,
+.post-body h4,
+.post-body h5,
+.post-body h6 {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 24px 0 12px;
 }
 
-.post-body ul, .post-body ol {
-  margin-bottom: 1.5em;
+.post-body > :first-child {
+  margin-top: 0;
+}
+
+.post-body ul,
+.post-body ol {
   padding-left: 24px;
 }
 
 .post-body li {
-  margin-bottom: 0.5em;
+  margin-bottom: 6px;
+}
+
+.post-body li > ul,
+.post-body li > ol {
+  margin-top: 6px;
 }
 
 .post-body blockquote {
-  border-left: 3px solid var(--accent-color);
-  padding: 8px 0 8px 16px;
-  margin: 0 0 1.5em 0;
-  color: var(--text-muted);
-  font-style: italic;
+  border-left: 2px solid #ddd;
+  padding-left: 16px;
+  margin: 20px 0;
+  color: #555;
 }
 
-/* Inline code and blocks */
 .post-body code {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 14px;
-  background-color: var(--bg-code);
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-size: 0.9em;
+  background: #f5f5f5;
+  padding: 2px 4px;
+  overflow-wrap: anywhere;
 }
 
 .post-body pre {
-  background-color: var(--bg-code);
+  background: #f5f5f5;
   padding: 16px;
-  border-radius: 8px;
   overflow-x: auto;
-  margin-bottom: 1.5em;
+  margin: 20px 0;
 }
 
 .post-body pre code {
-  background-color: transparent;
+  background: transparent;
   padding: 0;
-  border-radius: 0;
-  font-size: 13.5px;
+  overflow-wrap: normal;
 }
 
-/* Math (LaTeX via KaTeX) Styling */
+.post-body img,
+.post-body svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.post-body table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.post-body th,
+.post-body td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  vertical-align: top;
+}
+
+.post-body hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 24px 0;
+}
+
+/* Wide equations scroll within the reading column, including on phones. */
 .math-block {
-  margin: 2em 0;
-  padding: 12px;
+  margin: 20px 0;
+  padding: 6px 0;
   overflow-x: auto;
-  background-color: #fafafa;
-  border-left: 2px solid #eaeaea;
-  display: flex;
-  justify-content: center;
+  overflow-y: hidden;
 }
 
-.math-inline {
-  padding: 0 2px;
-  white-space: nowrap;
+.math-block .katex-display {
+  margin: 0;
+  width: max-content;
+  min-width: 100%;
 }
 
-/* Diagrams (Mermaid) Styling */
 .mermaid {
-  background-color: #fafafa;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 24px;
-  margin: 2em auto;
-  display: flex;
-  justify-content: center;
+  margin: 24px 0;
+  padding: 12px 0;
   overflow-x: auto;
+  text-align: center;
 }
 
-/* Loading & Errors */
+.loading,
+.error-msg {
+  padding: 24px 0;
+}
+
 .loading {
-  text-align: center;
-  color: var(--text-muted);
-  padding: 50px 0;
+  color: #555;
   font-style: italic;
 }
 
-.error-msg {
-  text-align: center;
-  padding: 40px 20px;
-  border: 1px dashed red;
-  border-radius: 8px;
-}
-
 .error-msg p {
-  color: red;
-  margin-bottom: 20px;
+  color: #a02020;
 }
 
-.back-home-btn {
-  color: var(--accent-color);
-  text-decoration: none;
-  font-weight: bold;
+.blog-footer {
+  margin-top: 40px;
+  text-align: right;
 }
 
-/* PDF Embed */
-.pdf-embed {
-  width: 100%;
-  height: 80vh;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  display: block;
+.blog-footer p,
+.blog-footer a {
+  font-size: small;
 }
 
-.pdf-download-link {
-  margin-top: 12px;
-  font-size: 14px;
-}
-
-.pdf-download-link a {
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-.pdf-download-link a:hover {
-  color: var(--accent-hover);
-}
-
-/* Footer style to match main page */
-footer {
-  margin-top: 60px;
-  border-top: 1px solid var(--border-color);
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-footer a {
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: var(--accent-hover);
-}
-
-/* Responsive adjustments */
 @media (max-width: 640px) {
-  .container {
-    padding: 24px 16px;
+  .blog-container {
+    padding: 16px;
   }
-  
-  header.blog-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+
+  .blog-header .name {
+    padding-top: 8px;
   }
-  
+
+  .post-title,
   .post-header h1 {
-    font-size: 26px;
-  }
-  
-  .post-body {
-    font-size: 15px;
+    overflow-wrap: anywhere;
   }
 }
